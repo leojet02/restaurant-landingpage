@@ -11,7 +11,15 @@ steps:
   - name: upload-to-s3
     image: amazon/aws-cli
     environment:
-      BUCKET: restaurant-landingpage-leojet02
-      AWS_DEFAULT_REGION: us-east-1
+      AWS_ACCESS_KEY_ID: 
+        from_secret: aws_access_key_id
+      AWS_SECRET_ACCESS_KEY: 
+        from_secret: aws_secret_access_key
+      AWS_SESSION_TOKEN:
+        from_secret: aws_session_token
+      AWS_DEFAULT_REGION:
+        from_secret: s3_region
+      BUCKET: 
+        from_secret: s3_bucket_name
     commands:
-      - aws s3 sync public/ s3://$BUCKET/ --acl public-read --delete
+      - aws s3 sync public/ s3://$BUCKET/ --delete

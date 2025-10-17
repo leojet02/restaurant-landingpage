@@ -11,7 +11,7 @@ steps:
   - name: upload-to-s3
     image: amazon/aws-cli
     environment:
-      BUCKET: 
+      BUCKET:
         from_secret: s3_bucket_name
     commands:
       - aws s3 sync public/ s3://$BUCKET/ --delete

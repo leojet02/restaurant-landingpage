@@ -11,10 +11,10 @@ steps:
   - name: upload-to-s3
     image: amazon/aws-cli
     environment:
-      BUCKET:
-        from_secret: s3_bucket_name
+      BUCKET: restaurant-landingpage-leojet02
+      AWS_DEFAULT_REGION: us-east-1
     commands:
-      - aws s3 sync public/ s3://$BUCKET/ --delete
+      - aws s3 sync public/ s3://$BUCKET/ --acl public-read --delete
 
   - name: show-output
     image: alpine

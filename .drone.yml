@@ -11,13 +11,7 @@ steps:
   - name: upload-to-s3
     image: amazon/aws-cli
     environment:
-      AWS_ACCESS_KEY_ID:
-        from_secret: aws_access_key_id
-      AWS_SECRET_ACCESS_KEY:
-        from_secret: aws_secret_access_key
-      AWS_DEFAULT_REGION:
-        from_secret: s3_region
-      BUCKET:
+      BUCKET: 
         from_secret: s3_bucket_name
     commands:
       - aws s3 sync public/ s3://$BUCKET/ --delete

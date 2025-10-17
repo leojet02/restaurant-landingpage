@@ -15,9 +15,3 @@ steps:
       AWS_DEFAULT_REGION: us-east-1
     commands:
       - aws s3 sync public/ s3://$BUCKET/ --acl public-read --delete
-
-  - name: show-output
-    image: alpine
-    commands:
-      - echo "✅ Site déployé sur: https://$BUCKET.s3.amazonaws.com/index.html"
-      - echo "✅ GitHub Repo: https://github.com/${DRONE_REPO}"

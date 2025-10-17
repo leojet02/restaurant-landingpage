@@ -6,7 +6,7 @@ steps:
   - name: build-site
     image: klakegg/hugo:0.111.3
     commands:
-      - hugo --minify --baseURL "https://${DRONE_REPO_OWNER,,}.github.io/${DRONE_REPO_NAME}/"
+      - hugo --minify --baseURL "https://restaurant-landingpage-leojet02.s3.us-east-1.amazonaws.com/"
 
   - name: upload-to-s3
     image: amazon/aws-cli
